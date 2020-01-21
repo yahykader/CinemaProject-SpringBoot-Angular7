@@ -9,6 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,11 +25,12 @@ public class Ticket implements Serializable{
 	@Column(length = 75)
 	private String nameClientTicket;
 	private double prix;
-	@Column(unique = true,nullable = true)
-	private Integer codePayment;
+	@Column(unique = false,nullable = true)
+	private int codePayment;
 	private boolean reserve;
 	@ManyToOne
 	private Place place;
 	@ManyToOne
+	//@JsonProperty(access = Access.WRITE_ONLY)
 	private ProjectionFilm projectionFilm;
 }

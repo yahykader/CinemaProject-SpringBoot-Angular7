@@ -113,8 +113,7 @@ public class CinemaServiceImpl implements ICinemaService {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		});
-		
+		});	
 	}
 
 	@Override
@@ -123,24 +122,22 @@ public class CinemaServiceImpl implements ICinemaService {
 			Categorie categorie=new Categorie();
 			categorie.setNameCategorie(nameCategorie);
 			CategorieRepository.save(categorie);
-		});
-		
+		});	
 	}
 
 	@Override
 	public void initFlims() {
 		List<Categorie> categories=CategorieRepository.findAll();
 		double[] durees=new double[] {1,2,1,3,2};
-		Stream.of("Des Serpents dans l'avion","Les Griffes de la nuit","Arrête ou ma mère va tirer",
-				  "Les cadavres ne portent pas de costard").forEach(nameFilm->{
+		Stream.of("Parasite","Dragons 3","Le Chant du Loup",
+				  "Battle Angel","Toy Story 4","Grâce à Dieu").forEach(nameFilm->{
 			Film film=new Film();
 			film.setTitreFilm(nameFilm);
-			film.setPhotoFilm(nameFilm.replaceAll(" ",""));
+			film.setPhotoFilm(nameFilm.replaceAll(" ","")+".jpg");
 			film.setCategorie(categories.get(new Random().nextInt(categories.size())));
 			film.setDureeFilm(durees[new Random().nextInt(durees.length)]);
 			filmRepository.save(film);
-		});
-		
+		});	
 	}
 
 	@Override
@@ -162,8 +159,7 @@ public class CinemaServiceImpl implements ICinemaService {
 					});
 				});
 			});
-		});
-		
+		});	
 	}
 
 	@Override
