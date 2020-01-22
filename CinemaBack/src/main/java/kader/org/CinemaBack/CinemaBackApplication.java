@@ -11,6 +11,7 @@ import kader.org.CinemaBack.entities.Film;
 import kader.org.CinemaBack.entities.ProjectionFilm;
 import kader.org.CinemaBack.entities.Salle;
 import kader.org.CinemaBack.entities.Seance;
+import kader.org.CinemaBack.entities.Ticket;
 import kader.org.CinemaBack.service.ICinemaService;
 
 @SpringBootApplication
@@ -27,7 +28,7 @@ public class CinemaBackApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-        repositoryRestConfiguration.exposeIdsFor(Film.class,ProjectionFilm.class,Seance.class,Salle.class);
+        repositoryRestConfiguration.exposeIdsFor(Film.class,ProjectionFilm.class,Seance.class,Salle.class,Ticket.class);
         cinemaService.initVilles();
         cinemaService.initCinemas();
         cinemaService.initSalles();
